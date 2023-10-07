@@ -6,7 +6,7 @@ from px4_msgs.msg import Wind, VehicleAirData, VehicleGlobalPosition
 class WeatherDiagnosticsNode(Node):
 
     def __init__(self):
-        super().__init__('weather_diagnostics_native')
+        super().__init__('weather_diagnostic_native')
         self.wind_speed = 0
         
         # Initialize ROS parameters for thresholds
@@ -112,7 +112,7 @@ class WeatherDiagnosticsNode(Node):
     def publish_diagnostics(self):
         # Publish diagnostic array
         self.diagnostic_array.header.stamp = self.get_clock().now().to_msg()
-        self.diagnostic_array.header.frame_id = "weather_diagnostics"
+        self.diagnostic_array.header.frame_id = "weather_diagnostic"
         # self.diagnostic_array.status.sort(key=lambda x: x.name)
         self.diagnostic_publisher.publish(self.diagnostic_array)
         self.diagnostic_array = DiagnosticArray()

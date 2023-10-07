@@ -45,16 +45,17 @@ class WeatherDiagnosticsNode(Node):
         update_wind = DiagnosticTaskWind(node=self)
         update_temperature = DiagnosticTaskTemperature(node=self)
         update_altitude = DiagnosticTaskAltitude(node=self)
+        
         updater.add(update_wind)
         updater.add(update_temperature)
         updater.add(update_altitude)
         
         # within using aggregator node
-        # compose_updater = CompositeDiagnosticTask("Weather status")
-        # compose_updater.addTask(update_wind)
-        # compose_updater.addTask(update_temperature)
-        # compose_updater.addTask(update_altitude)
-        # updater.add(compose_updater)
+        compose_updater = CompositeDiagnosticTask("Weather status")
+        compose_updater.addTask(update_wind)
+        compose_updater.addTask(update_temperature)
+        compose_updater.addTask(update_altitude)
+        updater.add(compose_updater)
 
     def wind_callback(self, msg):
         # TODO Choice One

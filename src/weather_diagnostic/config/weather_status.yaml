@@ -1,0 +1,20 @@
+analyzers:
+  ros__parameters:
+    arms:
+      type: diagnostic_aggregator/GenericAnalyzer
+      path: Weather_status[aggregation]
+      startswith: [ 'weather_diagnostic' ]
+
+weather_diagnostic:
+  ros__parameters:
+    timeout: 1
+
+    err_altitude: 2500.0
+
+    warn_wind_speed: 13.0
+    err_wind_speed: 15.0
+
+    warn_min_temperature: -30.0
+    warn_max_temperature: 40.0
+    err_min_temperature: -40.0
+    err_max_temperature: 50.0

@@ -1,6 +1,7 @@
 from setuptools import find_packages, setup
+from glob import glob
 
-package_name = 'weather_diagnostics'
+package_name = 'weather_diagnostic'
 
 setup(
     name=package_name,
@@ -9,7 +10,8 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
-        ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name, glob('launch/*launch.py')),
+        ('share/' + package_name, glob('config/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -20,8 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'weather_diagnostics_native = weather_diagnostics_native.weather_diagnostics:main',
-            'weather_diagnostics = weather_diagnostics.weather_diagnostics:main'
+            'weather_diagnostic_native = weather_diagnostic_native.weather_diagnostic:main',
+            'weather_diagnostic = weather_diagnostic.weather_diagnostic:main'
         ],
     },
 )

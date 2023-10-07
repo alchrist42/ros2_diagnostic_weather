@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>weather_diagnostics</name>
+  <name>weather_diagnostic</name>
   <version>0.0.0</version>
   <description>Calculates the status of weather conditions based on wind strength, temperature and altitude</description>
   <maintainer email="arh@todo.todo">arh</maintainer>
