@@ -8,11 +8,10 @@ import launch
 
 def generate_launch_description():
     params_filepath = path.join(get_package_share_directory('weather_diagnostic'), "weather_status.yaml")
-    aggregator = Node(
-        package='diagnostic_aggregator',
-        executable='aggregator_node',
-        output='screen',
-        parameters=[params_filepath],)
+    weather_data_filler = Node(
+        package='weather_diagnostic',
+        executable='weather_data_filler',
+        output='screen',)
     
     weather_diagnostic = Node(
         package='weather_diagnostic',
@@ -20,12 +19,7 @@ def generate_launch_description():
         parameters=[params_filepath],)
     
     return LaunchDescription([
-        aggregator,
+        weather_data_filler,
         weather_diagnostic,
-        launch.actions.RegisterEventHandler(
-            event_handler=launch.event_handlers.OnProcessExit(
-                target_action=aggregator,
-                on_exit=[launch.actions.EmitEvent(
-                    event=launch.events.Shutdown())],
-            )),
     ])
+        

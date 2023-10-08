@@ -24,7 +24,7 @@ class WeatherDiagnosticsNode(Node):
                 ("warn_min_temperature", -30.0),
                 ("err_min_temperature", -40.0),
                 ("warn_max_temperature", 40.0),
-                ("err_max_temperature", 40.0),
+                ("err_max_temperature", 50.0),
             ],
         )
         self.wind_speed = None
@@ -46,9 +46,9 @@ class WeatherDiagnosticsNode(Node):
         update_temperature = DiagnosticTaskTemperature(node=self)
         update_altitude = DiagnosticTaskAltitude(node=self)
         
-        updater.add(update_wind)
-        updater.add(update_temperature)
-        updater.add(update_altitude)
+        # updater.add(update_wind)
+        # updater.add(update_temperature)
+        # updater.add(update_altitude)
         
         # within using aggregator node
         compose_updater = CompositeDiagnosticTask("Weather status")
@@ -165,6 +165,8 @@ def main():
     rclpy.init()
     node = WeatherDiagnosticsNode()
     rclpy.spin(node)
+    node.destroy_node()
+    rclpy.try_shutdown()
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'weather_diagnostic_native = weather_diagnostic_native.weather_diagnostic:main',
+            'weather_data_filler = weather_diagnostic.weather_data_filler:main',
             'weather_diagnostic = weather_diagnostic.weather_diagnostic:main'
         ],
     },
